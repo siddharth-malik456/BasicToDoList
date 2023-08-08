@@ -1,0 +1,65 @@
+<% layout('layouts/boilerplate') -%>
+  <h1 class="today-heading">Notes</h1>
+  <a href="/notes/new"><img src="uploads/icons/add_icon.png" class="add-icon"></a>
+  <form action="/notes/search" class="search-form">
+    <input type="text" class="note-search" placeholder="Search" name="search">
+  </form>
+  <div class="all-notes">
+    <div class="left-note">
+      <% for (let i=0; i < notes.length; i +=3) { %>
+        <form action="/notes/<%= notes[i].id %>/edit">
+          <button>
+            <div class="total-note" style="background-color: <%= colours[i] %>">
+              <p class="note-heading">
+                <%= notes[i].heading %>
+              </p>
+              <p class="note-datecreated">
+                <%= notes[i].dateCreated %>
+              </p>
+              <p class="note-description">
+                <%= notes[i].description %>
+              </p>
+            </div>
+          </button>
+        </form>
+        <% } %>
+    </div>
+    <div class="middle-note">
+      <% for (let i=1; i < notes.length; i +=3) { %>
+        <form action="/notes/<%= notes[i].id %>/edit">
+          <button>
+            <div class="total-note" style="background-color: <%= colours[i] %>">
+              <p class="note-heading">
+                <%= notes[i].heading %>
+              </p>
+              <p class="note-datecreated">
+                <%= notes[i].dateCreated %>
+              </p>
+              <p class="note-description">
+                <%= notes[i].description %>
+              </p>
+            </div>
+          </button>
+        </form>
+        <% } %>
+    </div>
+    <div class="right-note">
+      <% for (let i=2; i < notes.length; i +=3) { %>
+        <form action="/notes/<%= notes[i].id %>/edit">
+          <button>
+            <div class="total-note" style="background-color: <%= colours[i] %>">
+              <p class="note-heading">
+                <%= notes[i].heading %>
+              </p>
+              <p class="note-datecreated">
+                <%= notes[i].dateCreated %>
+              </p>
+              <p class="note-description">
+                <%= notes[i].description %>
+              </p>
+            </div>
+          </button>
+        </form>
+        <% } %>
+    </div>
+  </div>

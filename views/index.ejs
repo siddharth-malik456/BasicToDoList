@@ -1,0 +1,12 @@
+<% layout('layouts/boilerplate') -%>
+  <h1>Today</h1>
+  <div class="today-main">
+    <h4>
+      <%= currentDate %>
+    </h4>
+    <% for (let today of todays) {%>
+      <p>
+        <%= today.title %>
+      </p>
+      <% } %>
+  </div>

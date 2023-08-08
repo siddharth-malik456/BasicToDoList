@@ -1,0 +1,57 @@
+<% layout('layouts/boilerplate') -%>
+  <h1 class="section-name-heading">Inbox</h1>
+  <a href="/inbox/section/new"><img src="uploads/icons/add_icon.png" class="add-icon"></a>
+  <div class="inbox-main">
+    <% if (sections.length==0){ %>
+      <p class="no-task">No Sections</p>
+      <% } else { %>
+        <% for (section of sections){ %>
+          <div class="section-total">
+            <p class="section-heading">
+              <%= section.name %>
+            </p>
+            <form action="/inbox/<%= section._id %>/section/edit" method="GET">
+              <button class="today-button"> <img src="uploads/icons/edit_icon.png" alt="" class="today-icons"></button>
+            </form>
+            <form action="/inbox/<%= section._id %>/section?_method=DELETE" method="POST">
+              <button class="today-button"> <img src="uploads/icons/delete_icon.png" alt=""
+                  class="today-icons"></button>
+            </form>
+          </div>
+          <% for (task of section.tasks) { %>
+            <div class="today-div inbox-div">
+              <div class="today-todo">
+                <img src="uploads/icons/unchecked_icon.png" alt="" class="today-icon"
+                  onclick="this.src='uploads/icons/checked_icon.png'"
+                  ondblclick="this.src='uploads/icons/unchecked_icon.png'">
+                <p class="task-heading">
+                  <%= task.title %>
+                </p>
+                <form action="/inbox/<%= task._id %>/task/edit" method="GET">
+                  <button class="today-button"><img src="uploads/icons/edit_icon.png" alt=""
+                      class="today-icons"></button>
+                </form>
+                <form action="/inbox/<%= task._id %>/task?_method=DELETE" method="POST">
+                  <button class="today-button"><img src="uploads/icons/cross_icon.png" alt=""
+                      class="today-icons"></button>
+                </form>
+              </div>
+              <p class="task-description">
+                <%= task.description %>
+              </p>
+              <p class="task-date">
+                <%= task.dueDate %>
+              </p>
+              <hr class="hr">
+            </div>
+
+            <% } %>
+              <div class="add-tasks-div">
+                <p class="plus-sign">+</p>
+                <a href="/inbox/task/<%= section._id %>/new" class="add-task"> Add Task</a>
+                </a>
+              </div>
+              <% } %>
+                <% } %>
+
+  </div>

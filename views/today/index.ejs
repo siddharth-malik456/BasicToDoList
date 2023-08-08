@@ -1,0 +1,71 @@
+<% layout('layouts/boilerplate') -%>
+  <h1 class="today-heading">Today</h1>
+  <div class="today-main">
+    <h4 class="date">
+      <%= currentDate %>
+    </h4>
+    <h3>
+    </h3>
+    <% if (todays.length==0){ %>
+      <p class="no-task">No tasks</p>
+      <% } else { %>
+        <% for (let today of todays) {%>
+          <div class="today-div">
+            <div class=" today-todo">
+              <img src="uploads/icons/unchecked_icon.png" alt="" class="today-icon"
+                onclick="this.src='uploads/icons/checked_icon.png'"
+                ondblclick="this.src='uploads/icons/unchecked_icon.png'">
+              <p class="today-title" id="todo-title">
+                <%= today.title %>
+              </p>
+              <form action="/today/<%= today._id %>/edit" method="GET" class="todo-button">
+                <button class="today-button"> <img src="uploads/icons/edit_icon.png" alt=""
+                    class="today-icons"></button>
+              </form>
+              <form action="/today/<%= today._id %>?_method=DELETE" method="POST" class="todo-button">
+                <button class="today-button"> <img src="uploads/icons/delete_icon.png" alt=""
+                    class="today-icons"></button>
+              </form>
+            </div>
+            <p class="today-description">
+              <%= today.description %>
+            </p>
+          </div>
+          <% } %>
+            <% } %>
+              <div class="add-tasks-div add-task-div">
+                <p class="plus-sign">+</p>
+                <a class="add-task" href="today/new"> Add todo</a>
+              </div>
+
+              <% if (overdues.length==0){ %>
+                <% } else { %>
+                  <h1 class="over-heading">Overdue</h1>
+                  <div class="overdue">
+                    <% for (let overdue of overdues) {%>
+                      <div class="today-div">
+                        <div class="today-todo">
+                          <img src="uploads/icons/unchecked_icon.png" alt="" class="today-icon" id="1"
+                            onclick="this.src='uploads/icons/checked_icon.png'"
+                            ondblclick="this.src='uploads/icons/unchecked_icon.png'">
+                          <p class="today-title" onclick="">
+                            <%= overdue.title %>
+                          </p>
+                          <form action="/today/<%= overdue._id %>/edit" method="GET" class="todo-button">
+                            <button class="today-button"> <img src="uploads/icons/edit_icon.png" alt=""
+                                class="today-icons"></button>
+                          </form>
+                          <form action="/today/<%= overdue._id %>?_method=DELETE" method="POST" class="todo-button">
+                            <button class="today-button"> <img src="uploads/icons/delete_icon.png" alt=""
+                                class="today-icons"></button>
+                          </form>
+                        </div>
+                        <p class="today-description">
+                          <%= overdue.description %>
+                        </p>
+                      </div>
+                      <% } %>
+                        <% } %>
+                  </div>
+
+  </div>
