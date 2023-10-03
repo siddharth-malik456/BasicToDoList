@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <title>Searched Notes</title>
+  <style>
+    body {
+      font-family: Inter;
+    }
+
+    .all-notes {
+      display: flex;
+      flex-direction: row;
+      flex: 1 1 1;
+      gap: 15px;
+      margin-left: 26%;
+      max-width: 900px;
+    }
+
+
+    .left-note {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 100%;
+      height: 100%;
+    }
+
+    .middle-note {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 100%;
+      height: 100%;
+    }
+
+    .right-note {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 100%;
+      height: 100%;
+    }
+
+    .total-note {
+      background-color: #FFF6A1;
+      padding: 20px;
+      text-align: justify;
+    }
+
+    .note-heading {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .note-datecreated {
+      font-size: 10px;
+    }
+
+    .search-button {
+      width: 20px;
+    }
+
+    .note-search {
+      height: 25px;
+      width: 300px;
+      font-size: 20px;
+      font-weight: semi-bold;
+      border-color: #2A85C7;
+      background-color: #bee4ff;
+      padding: 5px;
+      color: #194F75;
+      border-radius: 5px;
+      margin-left: 43%;
+      margin-bottom: 2%;
+    }
+
+    .search-button {
+      margin-left: 30%;
+    }
+
+    .update-button {
+      background-color: white;
+      border: none;
+    }
+
+    .heading {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 class="heading">Search results for <%= search %>
+  </h1>
+  <div class="all-notes">
+    <div class="left-note">
+      <% for (let i=0; i < notes.length; i +=3) { %>
+        <form action="/notes/<%= notes[i].id %>/edit">
+          <button class="update-button">
+            <div class="total-note" style="background-color: <%= colours[i] %>">
+              <p class="note-heading">
+                <%= notes[i].heading %>
+              </p>
+              <p class="note-datecreated">
+                <%= notes[i].dateCreated %>
+              </p>
+              <p class="note-description">
+                <%= notes[i].description %>
+              </p>
+            </div>
+          </button>
+        </form>
+        <% } %>
+    </div>
+    <div class="middle-note">
+      <% for (let i=1; i < notes.length; i +=3) { %>
+        <form action="/notes/<%= notes[i].id %>/edit">
+          <button class="update-button">
+            <div class="total-note" style="background-color: <%= colours[i] %>">
+              <p class="note-heading">
+                <%= notes[i].heading %>
+              </p>
+              <p class="note-datecreated">
+                <%= notes[i].dateCreated %>
+              </p>
+              <p class="note-description">
+                <%= notes[i].description %>
+              </p>
+            </div>
+          </button>
+        </form>
+        <% } %>
+    </div>
+    <div class="right-note">
+      <% for (let i=2; i < notes.length; i +=3) { %>
+        <form action="/notes/<%= notes[i].id %>/edit">
+          <button class="update-button">
+            <div class="total-note" style="background-color: <%= colours[i] %>">
+              <p class="note-heading">
+                <%= notes[i].heading %>
+              </p>
+              <p class="note-datecreated">
+                <%= notes[i].dateCreated %>
+              </p>
+              <p class="note-description">
+                <%= notes[i].description %>
+              </p>
+            </div>
+          </button>
+        </form>
+        <% } %>
+    </div>
+  </div>
+</body>
+
+</html>

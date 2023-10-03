@@ -1,0 +1,21 @@
+<nav class="sidebar">
+  <div class="section-divs">
+    <img src="uploads/icons/inbox_icon.png" alt="" class="sidebar-icons">
+    <a href="/inbox" class="sidebar-element">Inbox</a>
+  </div>
+  <div class="section-divs">
+    <span class="current-date">
+      <% const date=new Date(); %>
+        <% if (date.getDate() < 10) {%>
+          <%= `0${date.getDate()}` %>
+            <% } else { %>
+              <%= date.getDate() %>
+                <% } %>
+    </span>
+    <a href="/today" class="sidebar-element">Today</a>
+  </div>
+  <div class="section-divs">
+    <img src="uploads/icons/notes_icon.png" alt="" class="sidebar-icons">
+    <a href="/notes" class="sidebar-element">Notes</a>
+  </div>
+</nav>
